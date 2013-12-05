@@ -1,0 +1,67 @@
+	
+	Resources / Controllers
+	_______________________
+
+	Definitions
+
+	Users
+
+	Lists
+
+
+
+
+	Models
+	_________________________
+
+	User
+
+	List
+
+	( Definitions ? )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
