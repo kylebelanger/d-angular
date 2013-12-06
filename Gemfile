@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'pg'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 
 
 group :development do
-	gem 'pg'
 	gem 'annotate', '~> 2.4.1.beta'
 end
 
@@ -20,3 +20,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :production, :staging do
+     gem 'rails_12factor'
+end
