@@ -1,0 +1,62 @@
+$(document).ready(function(){	
+		
+	// nav
+	$("nav[role='static']").click(				
+		function(){
+			
+			// display
+			$("#page-overlay, nav[role='active']").show();
+
+			// hide
+			$("#page-overlay").click(function() {
+				$("nav[role='active'], #page-overlay").hide();
+			});
+				
+				// toggle between login / register
+				$(".static-color").click(function() {
+					$("#login").hide();
+					$("#register").show();
+					
+					$(this).addClass("active-color");
+				
+				});
+
+				// toggle between login / register
+				$(".active-color").click(function() {
+					$("#login").show();
+					$("#register").hide();
+					
+					$(this).addClass("static-color");
+				});
+				
+		}						
+	);
+
+		
+
+	// continue reading
+	$(".underline-hover").click(				
+		function(){
+			$(".grey-text").hide();
+			$("#continue-reading").show();
+		}						
+	);
+
+		
+	// search
+	$(function () {
+	    $('#search-typing').on('keyup input', function () {
+
+	        var length = this.value.length;
+	        
+	        if (length >= 20) {
+	            $(this).css("width", "450px");
+
+	            // reset
+	            if (length <= 20) {
+	            	$(this).css({"width":""});
+	            }
+	        }
+	    });
+	});
+});		
