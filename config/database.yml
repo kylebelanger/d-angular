@@ -1,27 +1,6 @@
 development:
   adapter: postgresql
-  database: diction_development
-  pool: 5
-  timeout: 5000
-  username: postgres
-  password: secrect
-  host: localhost
-  encoding: UTF8
-
-test:
-  adapter: postgresql
-  database: diction_test
-  pool: 5
-  timeout: 5000
-  username: postgres
-  password: secrect
-  host: localhost
-  encoding: UTF8
-
-production:
-  adapter: postgresql
-  database: diction_production
-  encoding: unicode
+  database: diction
   pool: 5
   timeout: 5000
   username: postgres

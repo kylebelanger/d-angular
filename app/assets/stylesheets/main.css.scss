@@ -8,7 +8,7 @@ body {
 	margin: 0;	
 }
 
-/*
+
 .loading {
 	position: fixed;
 	width: 98%;
@@ -18,7 +18,7 @@ body {
 	opacity: .6;
 	z-index: 1222;
 }
-*/
+
 
 #pagewrap {
 	position: static;
@@ -326,6 +326,7 @@ footer #footer-container span {
 	width: 300px;
 	height: 20px;
 	outline-color: #DCDCDC;
+	border: thin solid grey;
 }
 
 
