@@ -7,6 +7,8 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'turbolinks'
 
+gem 'wordnik'
+
 
 group :development do
 	gem 'annotate', '~> 2.4.1.beta'
