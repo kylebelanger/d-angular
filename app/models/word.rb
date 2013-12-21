@@ -1,33 +1,27 @@
 class Word
   
-  attr_accessor :name
-  
-  def initialize(name)
-    self.name = name
-  end
-  
-  def definitions
-    Wordnik.word.get_definitions(self.name)
-  end
+  require 'rubygems'
+  require 'json'
 
-  # Get one or many random words
-  # Word.random(:limit => 10)
-  # Word.random
-  def self.random(options={})
+  attr_accessor :search 
 
-    # Defaults
-    options.reverse_merge!(
-      :min_corpus_count => 1000,
-      :min_dictionary_count => 5,
-      :limit => 1
-    )
-    
-    # Get back an array of hashes that look like {"id"=>92367, "word"=>"resist"} 
-    # and turn them into Word objects:
-    words = Wordnik.words.get_random_words(options).map{|obj| Word.new(obj['word']) }
-    
-    # Return one or many?
-    options[:limit] == 1 ? words.first : words
-  end
-  
+ 
+  def self.search(search)
+
+    # Get back JSON response containing array of hashes?
+    response = Wordnik.word.get_definitions(search)
+
+    # Parse JSON to an array of hashes?
+    hash_result = JSON.parse(response)
+
+    # Access first hash in the array
+    #result = hash_result.first
+
+    #words_json = JSON.parse(words_hash.to_json) 
+
+    #return :text key of the hash
+    #definition = words_json["text"].to_s
+
+  end  
+
 end

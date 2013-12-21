@@ -1,17 +1,17 @@
-<% provide(:title, "Vocabulary Expansion") %>
+<% provide(:title, "- Home") %>
 
 <!-- start search -->
 <div class="search">
-	<form action="/search" method="get">
-		
-		<input id="search-typing" type="text" name="keyword" 
-				placeholder="Enter terms to search..." autofocus="true">
-		<abbr title="Search">
-			<input class="search-glass" type="image" 
-					name="submit" src="search-icon.png">
-		</abbr>
-		
-	</form>												
+	<abbr title="Search">
+	
+	<%= form_tag("/search", method: "get") do %>
+	    <%= text_field_tag :search, params[:search], :class => "search-form", 
+	    		:placeholder => 'Enter words to find definitions...', :autofocus => true %>
+	    
+	    <%= submit_tag nil, :class => "search-glass", :src => "search-icon.png", :type => "image" %>
+	<% end %>
+
+	</abbr>									
 </div>
 <!-- /search -->
 
@@ -29,8 +29,7 @@
 		<section id="continue-reading">
 			
 			<div class="read-more">
-				<img src="files/img/index/papers.png"><br>
-				<p class="blue">Group and organize vocabulary terms into lists, making them easier to study, review, and learn.</p>
+				<p>Group and organize vocabulary terms into lists, making them easier to study, review, and learn.</p>
 			</div>
 
 		</section>
@@ -44,7 +43,7 @@
 	<div id="footer-container"><hr>
 
 		<span>( source )</span>
-		<span>( @lblnr )</span>
+		<span>( @blnr )</span>
 
 	</div>
 </footer>
