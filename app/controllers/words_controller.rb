@@ -1,12 +1,11 @@
 class WordsController < ApplicationController
 
 	def index
-		@word = Word.search(params[:search])
 	end
 
 	def search
 		@word = Word.search(params[:search])
-			render layout: "application", template: "words/index"
+			render layout: "application", template: "words"
 	end
 
 	def destroy

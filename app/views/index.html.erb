@@ -1,50 +1,50 @@
-<% provide(:title, "- Home") %>
+	<% provide(:title, "Home") %>
 
-<!-- start search -->
-<div class="search">
-	<abbr title="Search">
-	
-	<%= form_tag("/search", method: "get") do %>
-	    <%= text_field_tag :search, params[:search], :class => "search-form", 
-	    		:placeholder => 'Enter words to find definitions...', :autofocus => true %>
-	    
-	    <%= submit_tag nil, :class => "search-glass", :src => "search-icon.png", :type => "image" %>
-	<% end %>
+	<!-- start search -->
+	<div class="search">
+		<abbr title="Search">
+		
+		<%= form_tag("/search", method: "get") do %>
+		    <%= text_field_tag :search, params[:search], :class => "search-form", 
+		    		:placeholder => 'Enter words to find definitions...', :autofocus => true %>
+		    
+		    <%= submit_tag nil, :class => "search-glass", :src => "search-icon.png", :type => "image" %>
+		<% end %>
 
-	</abbr>									
-</div>
-<!-- /search -->
-
-<!-- welcome message -->
-<div id="welcome-message">
-	
-	<p>Welcome,</p>
-	<p>Diction allows you to create and store vocabulary lists...</p>
-	
-	<p style="margin-top: 25px;" class="grey-text">
-		[ <span class="underline-hover">continue reading...</span> ]
-	</p>
-	
-		<!-- continue reading -->
-		<section id="continue-reading">
-			
-			<div class="read-more">
-				<p>Group and organize vocabulary terms into lists, making them easier to study, review, and learn.</p>
-			</div>
-
-		</section>
-		<!-- /continue reading -->
-	
-</div>
-<!-- /welcome message -->
-
-<!-- start footer -->
-<footer>
-	<div id="footer-container"><hr>
-
-		<span>( source )</span>
-		<span>( @blnr )</span>
-
+		</abbr>									
 	</div>
-</footer>
-<!-- /footer -->
+	<!-- /search -->
+
+	<!-- welcome message -->
+	<div id="welcome-message">
+		
+		<p>Welcome,</p>
+		<p>Diction allows you to create and store vocabulary lists...</p>
+		
+		<p style="margin-top: 25px;" class="grey-text">
+			[ <span class="underline-hover">continue reading...</span> ]
+		</p>
+		
+			<!-- continue reading -->
+			<section id="continue-reading">
+				
+				<div class="read-more">
+					<p>Group and organize vocabulary terms into lists, making them easier to study, review, and learn.</p>
+				</div>
+
+			</section>
+			<!-- /continue reading -->
+		
+	</div>
+	<!-- /welcome message -->
+
+	<!-- start footer -->
+	<footer>
+		<div id="footer-container"><hr>
+
+			<span>( source )</span>
+			<span>( @blnr )</span>
+
+		</div>
+	</footer>
+	<!-- /footer -->
