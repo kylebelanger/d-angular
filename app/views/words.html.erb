@@ -1,9 +1,13 @@
-<h1><%= @word.first["word"] %></h1>
 
 
-	<!-- display hash reults -->
-	<p>
-		<%= @word.first["text"] %>
-	</p>
 
+	<!-- loop through word elements -->
+    <% @word.each do |element|	%>
 
+    	<!-- display word -->
+        <h1>  <%= @word[0]["word"] %>	</h1>
+    	
+    	<!-- display definition -->
+		<p>	  <%= @word[0]["text"] %>	</p>
+
+    <% end %>

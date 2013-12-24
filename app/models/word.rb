@@ -4,19 +4,31 @@ class Word
 
 
     def self.search(search)
+     
+      # determine if search has multiple words (regix = seperated by a comma, or whitespace)
+      if search.match(/[\s,]+/)    
+        # split and return an array of search words
+        search = search.split(/[\s,]+/)
+      else 
+        # string to array
+        search = search.split   
+      end
 
-      # returns an array of multiple search words if they are seperated by a comma, or whitespace
-      #words = search.split(/[\s,]+/)
 
-      # ruby for loop
-      #words.each do |element|
-      #    element.do_something
-      #end
+      # create an empty response array for loop below
+      response = []
 
-      # Get back an array of hashes with multiple definitions for a single word
-      response = Wordnik.word.get_definitions(search)
+      search.each do |element|
+        # Get back the first hash containing word information
+        # Without .first returns an array of hashes with multiple definitions for single word
+        response << Wordnik.word.get_definitions(element).first
+      end
+
+      # return array of hashes containing information for each word
+      return response
 
     end  
+
 
 
 end
