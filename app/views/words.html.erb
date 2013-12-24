@@ -1,13 +1,21 @@
 
-
-
 	<!-- loop through word elements -->
     <% @word.each do |element|	%>
 
     	<!-- display word -->
-        <h1>  <%= @word[0]["word"] %>	</h1>
+        <h1>  <%= element["word"] %>	</h1>
+
+    	<!-- display part of speech -->
+		<i>	  <%= element["partOfSpeech"] %>	</i>
     	
     	<!-- display definition -->
-		<p>	  <%= @word[0]["text"] %>	</p>
+		<p>	  <%= element["text"] %>	</p>
 
     <% end %>
+
+
+    <!-- remove header drop effect -->
+    <script>
+    	$('header#home-drop').removeAttr('id');
+    </script>
+
