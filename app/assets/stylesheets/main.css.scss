@@ -41,12 +41,6 @@ p, footer span, #menu-contain span, .text {
 
 
 
-/*	______________________________
-	START PARTIALS
-	______________________________ 
-*/
-
-
 /*	HEADER
 	______________________________
 */
@@ -211,7 +205,6 @@ nav[role="active"] {
 }
 
 
-
 .button-submit, .login-register-form, .login-register-form label, .login-register-form input {
 	float: left;
 	clear: both;
@@ -253,45 +246,6 @@ nav[role="active"] #register {
 	display: none;
 }
 
-
-
-
-
-
-
-
-/*	FOOTER
-	______________________________
-*/
-
-footer {
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-	width: 100%;
-	height: 65px;
-
-}
-
-footer #footer-container {
-	width: 950px;
-	height: 55px;
-	margin: 0 auto;
-}
-
-footer #footer-container hr {
-	position: inherit;
-	border: none;
-	border-top: thin dotted grey;
-	margin-right: 0;
-	width: 55%;
-}
-
-footer #footer-container span {
-	opacity: .85;
-	float: right;
-	margin: 5px 0 5px 10px;
-}
 
 
 
@@ -383,6 +337,37 @@ footer #footer-container span {
 	color: 336699;
 
 }
+
+footer {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 65px;
+
+}
+
+footer #footer-container {
+	width: 950px;
+	height: 55px;
+	margin: 0 auto;
+}
+
+footer #footer-container hr {
+	position: inherit;
+	border: none;
+	border-top: thin dotted grey;
+	margin-right: 0;
+	width: 55%;
+}
+
+footer #footer-container span {
+	opacity: .85;
+	float: right;
+	margin: 5px 0 5px 10px;
+}
+
+
 
 
 
@@ -504,9 +489,48 @@ nav[role="dashboard-nav"] .nav-arrow-up {
 
 @media all and (max-width: 650px) and (min-width: 0px) {
 
-	nav[role="static"] {
-		float: left;
-		margin: 20px 0 20px -10px;
+	p {
+		font-size: 10px;
 	}
 
+	header[role="masthead"] {
+		height: 55px;
+	}
+
+	nav[role="static"] {
+		float: left;
+		margin: 20px 0 20px 5px;
+	}
+
+	nav[role="static"] .menu-text, .arrow-up {
+		display: none;
+	}
+
+	.mobile-menu {
+	  position: relative;
+	  padding-left: 1.25em;
+	}
+	.mobile-menu:before {
+	  content: "";
+	  position: absolute;
+	  left: 0;
+	  top: 0.40em;
+	  width: 1em;
+	  height: 0.10em;
+	  background: #333;
+	  box-shadow: 
+	    0 0.25em 0 0 #333,
+	    0 0.5em 0 0 #333;
+	}
+
+
+
+	.search input[name="keyword"] {
+	width: 80%;
+	}
+
+	 #welcome-message p {
+		font-size: 10px;
+	}
 }
+

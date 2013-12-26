@@ -1,51 +1,38 @@
 $(document).ready(function(){	
 	
-
-	// login nav
+	// nav
 	$("nav[role='static']").click(				
 		function(){
 			
 			// display
-			$("#page-overlay, nav[role='active']").show();
+			$("#page-overlay, nav[role='active']").show();							
+		                      
+		        // toggle between login / register
+		        $("#login-register").on('click', '.static-color', function() {
+		            $('.active-color, .static-color').toggleClass("active-color static-color");
+		            $("#login, #register").toggle();
+		        });
 
 			// hide
 			$("#page-overlay").click(function() {
 				$("nav[role='active'], #page-overlay").hide();
-			});
-				
-				// toggle between login / register
-				$(".static-color").click(function() {
-					$("#login").hide();
-					$("#register").show();
-					
-					$(this).addClass("active-color");
-				
-				});
+			});		
 
-				// toggle between login / register
-				$(".active-color").click(function() {
-					$("#login").show();
-					$("#register").hide();
-					
-					$(this).addClass("static-color");
-				});
-				
 		}						
 	);
 
-		
 
-	// continue reading on index
+	// continue reading
 	$(".underline-hover").click(				
 		function(){
 			$(".grey-text").hide();
 			$("#continue-reading").show();
+
 		}						
 	);
 
-
 		
-	// expand search box width if charectors are greater than 20
+	// search
 	$(function () {
 	    $('#search-typing').on('keyup input', function () {
 
@@ -60,5 +47,5 @@ $(document).ready(function(){
 	            }
 	        }
 	    });
-	});
+});
 });		

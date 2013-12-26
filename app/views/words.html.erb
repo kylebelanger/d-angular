@@ -1,17 +1,45 @@
+<% provide(:title, "Search") %>
 
-	<!-- loop through word elements -->
-    <% @word.each do |element|	%>
 
-    	<!-- display word -->
-        <h1>  <%= element["word"] %>	</h1>
+<!-- start dashboard nav -->
+<nav role="dashboard-nav">
+    <span class="text"><img class="search-glass" src="search-icon.png"></span>
+    <span class="text">Filter-By <span class="nav-arrow-up"></span></span>
+    <span class="text">Sort-By <span class="nav-arrow-up"></span></span>
+    <span class="text">Lists <span class="nav-arrow-up"></span></span>
+</nav>
+<!-- /dashboard nav -->
 
-    	<!-- display part of speech -->
-		<i>	  <%= element["partOfSpeech"] %>	</i>
-    	
-    	<!-- display definition -->
-		<p>	  <%= element["text"] %>	</p>
+<!-- start search results -->
+<div id="search-results">
+
+    <% # Loop through word elements %>
+    <% @word.each do |element|  %>
+    
+        <div class="word-container">
+            
+            <section class="top-container">
+                <p class="word"><%= element["word"] %></p>
+                <p class="word-pronounce"> /test/ </p>
+                <p class="speech"><%= element["partOfSpeech"] %></p>
+            </section>
+                
+            <section class="definition-container">
+                <ol>
+                    <li role="definition"><%= element["text"] %></li>
+                    <p role="example-sentence">"No sparking was visible during the tests"</p>
+                </ol>
+            </section>
+                <span class="extra-information"></span>                 
+        
+        </div>
 
     <% end %>
+    <% # End loop %>
+
+</div>
+<!-- /search results -->
+
 
 
     <!-- remove header drop effect -->
