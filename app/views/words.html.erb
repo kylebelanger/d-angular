@@ -1,44 +1,21 @@
 <% provide(:title, "Search") %>
 
 
-<!-- start dashboard nav -->
-<nav role="dashboard-nav">
-    <span class="text"><img class="search-glass" src="search-icon.png"></span>
-    <span class="text">Filter-By <span class="nav-arrow-up"></span></span>
-    <span class="text">Sort-By <span class="nav-arrow-up"></span></span>
-    <span class="text">Lists <span class="nav-arrow-up"></span></span>
-</nav>
-<!-- /dashboard nav -->
-
-<!-- start search results -->
-<div id="search-results">
 
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
-    
-        <div class="word-container">
             
-            <section class="top-container">
-                <p class="word"><%= element["word"] %></p>
-                <p class="word-pronounce"> /test/ </p>
-                <p class="speech"><%= element["partOfSpeech"] %></p>
-            </section>
-                
-            <section class="definition-container">
-                <ol>
-                    <li role="definition"><%= element["text"] %></li>
-                    <p role="example-sentence">"No sparking was visible during the tests"</p>
-                </ol>
-            </section>
-                <span class="extra-information"></span>                 
+        <h1><%= element["word"] %></h1>
+           
+        <i><%= element["partOfSpeech"] %></i>
         
-        </div>
+            <ol>
+                <li><%= element["text"] %></li>
+            </ol>
 
     <% end %>
     <% # End loop %>
 
-</div>
-<!-- /search results -->
 
 
 
