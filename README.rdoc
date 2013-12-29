@@ -1,6 +1,9 @@
-== General Usage
+== Diction
 
-Rails web-app for searching and displaying vocabulary terms from the Wordnik API. 
+A simple web-app for searching and displaying vocabulary terms from 
+the Wordnik API. 
 
-Search for multiple words at once through comma seperation: 
-  <tt>epitome, fallacy, pensive, dismal</tt>
+Use a comma to search for multiple words at once: 
+epitome, fallacy, pensive, dismal
+
+http://dictionproject.heroku.com
