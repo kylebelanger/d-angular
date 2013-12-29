@@ -1,0 +1,16 @@
+
+
+    <% # Loop through word elements %>
+    <% @word.each do |element|  %>
+            
+        <h1><%= element[0]["word"] %></h1>
+           
+        <i><%= element[0]["partOfSpeech"] %></i>
+        
+            <ol>
+                <li><%= element[0]["text"] %></li>
+                <li><%= element[1]["text"] %></li>
+            </ol>
+
+    <% end %>
+    <% # End loop %>

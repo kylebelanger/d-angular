@@ -21,7 +21,7 @@ class Word
       search.each do |element|
         # Get back the first hash containing word information
         # Without .first returns an array of hashes with multiple definitions for single word
-        response << Wordnik.word.get_definitions(element).first
+        response << Wordnik.word.get_definitions(element)
       end
 
       # return array of hashes containing information for each word
