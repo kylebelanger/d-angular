@@ -1,15 +1,3 @@
-<% provide(:title, "Search") %>
-
-
-<nav role="dashboard-nav">
-    <span class="text"><img class="search-glass" src="files/img/search-icon.png"></span>
-    <span class="text">Filter-By <span class="nav-arrow-up"></span></span>
-    <span class="text">Sort-By <span class="nav-arrow-up"></span></span>
-    <span class="text">Lists <span class="nav-arrow-up"></span></span>
-</nav>
-    
-
-<div id="search-results">
 
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
@@ -34,12 +22,3 @@
 
     <% end %>
     <% # End loop %> 
-
-</div>
-
-
-<!-- remove header drop effect -->
-<script>
-   	$('header#home-drop').removeAttr('id');
-</script>
-

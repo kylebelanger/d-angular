@@ -1,16 +1,45 @@
+<% provide(:title, "Search") %>
 
+
+<nav role="dashboard-nav">
+    <span class="text"><img class="search-glass" src="files/img/search-icon.png"></span>
+    <span class="text">Filter-By <span class="nav-arrow-up"></span></span>
+    <span class="text">Sort-By <span class="nav-arrow-up"></span></span>
+    <span class="text">Lists <span class="nav-arrow-up"></span></span>
+</nav>
+    
+
+<div id="search-results">
 
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
-            
-        <h1><%= element[0]["word"] %></h1>
+
+        <div class="word-container">
            
-        <i><%= element[0]["partOfSpeech"] %></i>
-        
-            <ol>
-                <li><%= element[0]["text"] %></li>
-                <li><%= element[1]["text"] %></li>
-            </ol>
+            <section class="top-container">
+                <p class="word">            <%= element[0]["word"] %></p>
+                <p class="word-pronounce"> /<%= element[0]["word"] %>/</p>
+                <p class="speech">          <%= element[0]["partOfSpeech"] %></p>
+            </section>
+                
+            <section class="definition-container">
+                <ol>
+                    <li role="definition">  <%= element[0]["text"] %></li>
+                    <li role="definition">  <%= element[1]["text"] %></li>
+                </ol>
+            </section>
+                <span class="extra-information"></span>               
+
+        </div>
 
     <% end %>
-    <% # End loop %>
+    <% # End loop %> 
+
+</div>
+
+
+<!-- remove header drop effect -->
+<script>
+    $('header#home-drop').removeAttr('id');
+</script>
+

@@ -404,6 +404,7 @@ footer #footer-container span {
 .speech {
 	margin-top: 5px;
 	font-style: italic;
+	font-size: 14px;
 }
 
 .definition-container {
@@ -416,6 +417,7 @@ footer #footer-container span {
 li[role="definition"] {
 	font-size: 14px;
 	color: #333;
+	margin-bottom: 5px;
 }
 
 nav[role="dashboard-nav"] {
@@ -523,13 +525,15 @@ nav[role="dashboard-nav"] .nav-arrow-up {
 	    0 0.5em 0 0 #333;
 	}
 
-
-
 	.search input[name="keyword"] {
 	width: 80%;
 	}
 
 	 #welcome-message p {
+		font-size: 10px;
+	}
+
+	footer span {
 		font-size: 10px;
 	}
 }

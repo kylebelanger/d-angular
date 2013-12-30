@@ -19,9 +19,9 @@ class Word
       response = []
 
       search.each do |element|
-        # Get back the first hash containing word information
-        # Without .first returns an array of hashes with multiple definitions for single word
-        response << Wordnik.word.get_definitions(element)
+        # Get back the two hashes containing word information
+        response << Wordnik.word.get_definitions(element)[0..1]
+        #response << Wordnik.word.get_audio(element)[0]
       end
 
       # return array of hashes containing information for each word
@@ -44,6 +44,12 @@ attr_accessor :name
   def examples
     Wordnik.word.get_examples(self.name)
   end
+
+  def audio
+    Wordnik.word.get_audio(self.name)
+  end
+
+
 #CONSOLE SESSION
 
 

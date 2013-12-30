@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'wordnik'
+gem 'httparty'
 
 
 group :development do
