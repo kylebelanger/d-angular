@@ -1,7 +1,7 @@
 == Diction
 
 A simple web-app for searching and displaying vocabulary terms from 
-the Wordnik API. 
+Google's definition data. 
 
 Use a comma to search for multiple words at once: 
 epitome, fallacy, pensive, dismal
