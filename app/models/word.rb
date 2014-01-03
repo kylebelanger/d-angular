@@ -1,7 +1,21 @@
+require 'httparty'
+
+
+class JsonpParser < HTTParty::Parser
+  SupportedFormats = {"text/javascript" => :jsonp}
+
+  def jsonp
+    JSON.load(body[2..-11], nil)
+  end
+
+end
+
+
 class Word
 
+  include HTTParty
+  parser JsonpParser
   attr_accessor :search 
-
 
     def self.search(search)
      
@@ -14,44 +28,19 @@ class Word
         search = search.split   
       end
 
-
       # create an empty response array for loop below
       response = []
+      data = []
 
       search.each do |element|
         # Get back the two hashes containing word information
-        response << Wordnik.word.get_definitions(element)[0..1]
-        #response << Wordnik.word.get_audio(element)[0]
+        data = get "http://www.google.com/dictionary/json?callback=a&sl=en&tl=en&q=#{element}"
+        response << data
       end
 
       # return array of hashes containing information for each word
       return response
 
     end  
-
-
-# CONSOLE SESSION
-attr_accessor :name
-
-  def initialize(name)
-    self.name = name
-  end
-  
-  def definitions
-    Wordnik.word.get_definitions(self.name)
-  end
-
-  def examples
-    Wordnik.word.get_examples(self.name)
-  end
-
-  def audio
-    Wordnik.word.get_audio(self.name)
-  end
-
-
-#CONSOLE SESSION
-
-
 
 end

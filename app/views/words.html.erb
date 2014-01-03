@@ -2,23 +2,15 @@
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
 
-        <div class="word-container">
-           
-            <section class="top-container">
-                <p class="word">            <%= element[0]["word"] %></p>
-                <p class="word-pronounce"> /<%= element[0]["word"] %>/</p>
-                <p class="speech">          <%= element[0]["partOfSpeech"] %></p>
-            </section>
-                
-            <section class="definition-container">
-                <ol>
-                    <li role="definition">  <%= element[0]["text"] %></li>
-                    <li role="definition">  <%= element[1]["text"] %></li>
-                </ol>
-            </section>
-                <span class="extra-information"></span>               
 
-        </div>
+               
+                <p class="word">            <%= element["primaries"][0]["terms"][0]["text"] %> </p>
+
+                <ol>
+                     <li role="definition"> <%= element["primaries"][0]["entries"][1]["terms"][0]["text"] %> </li>
+                </ol>
+
+
 
     <% end %>
     <% # End loop %> 
