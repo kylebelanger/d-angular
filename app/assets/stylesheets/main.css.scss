@@ -402,9 +402,7 @@ footer #footer-container span {
 }
 
 .speech {
-	margin-top: 5px;
-	font-style: italic;
-	font-size: 14px;
+	margin-bottom: 0px;
 }
 
 .definition-container {
@@ -525,8 +523,20 @@ nav[role="dashboard-nav"] .nav-arrow-up {
 	    0 0.5em 0 0 #333;
 	}
 
-	.search input[name="keyword"] {
-	width: 80%;
+	.search-form {
+		width: 80%;
+	}
+
+	nav[role="dashboard-nav"] {
+		margin-left: -5px;
+	}
+
+	#search-results {
+		margin-left: -15px;
+
+			.word-container {
+				width: 100%;
+			}
 	}
 
 	 #welcome-message p {

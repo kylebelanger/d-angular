@@ -1,16 +1,42 @@
+<% provide(:title, "Search") %>
+
+
+<nav role="dashboard-nav">
+    <span class="text"><img class="search-glass" src="search-icon.png"></span>
+    <span class="text">Filter-By <span class="nav-arrow-up"></span></span>
+    <span class="text">Sort-By <span class="nav-arrow-up"></span></span>
+    <span class="text">Lists <span class="nav-arrow-up"></span></span>
+</nav>
+    
+
+<div id="search-results">
 
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
 
-
-               
-                <p class="word">            <%= element["primaries"][0]["terms"][0]["text"] %> </p>
-
+        <div class="word-container">
+           
+            <section class="top-container">
+                <p class="word">            <%= element["primaries"][0]["terms"][0]["text"] %></p>
+                <p class="speech">          <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %></p>
+            </section>
+                
+            <section class="definition-container">
                 <ol>
-                     <li role="definition"> <%= element["primaries"][0]["entries"][1]["terms"][0]["text"] %> </li>
+                    <li role="definition">  <%= element["primaries"][0]["entries"][0]["terms"][0]["text"] %></li>
                 </ol>
+            </section>
+                <span class="extra-information"></span>               
 
-
+        </div>
 
     <% end %>
     <% # End loop %> 
+
+</div>
+
+
+<!-- remove header drop effect -->
+<script>
+    $('header#home-drop').removeAttr('id');
+</script>

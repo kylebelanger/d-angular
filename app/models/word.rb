@@ -1,13 +1,14 @@
 require 'httparty'
+require 'active_support/inflector'
 
 
 class JsonpParser < HTTParty::Parser
   SupportedFormats = {"text/javascript" => :jsonp}
 
   def jsonp
+    # strip JSONP callback paremeters
     JSON.load(body[2..-11], nil)
   end
-
 end
 
 
@@ -18,8 +19,8 @@ class Word
   attr_accessor :search 
 
     def self.search(search)
-     
-      # determine if search has multiple words (regix = seperated by a comma, or whitespace)
+      
+      # Determine if search has multiple words (regix = seperated by a comma, or whitespace)
       if search.match(/[\s,]+/)    
         # split and return an array of search words
         search = search.split(/[\s,]+/)
@@ -27,15 +28,26 @@ class Word
         # string to array
         search = search.split   
       end
+      
+      # Create empty response arrays for loop below
+      response, data = [], []
 
-      # create an empty response array for loop below
-      response = []
-      data = []
-
+      # Loop through search words and get data for each
       search.each do |element|
-        # Get back the two hashes containing word information
+        
+        # Get data containing word information
         data = get "http://www.google.com/dictionary/json?callback=a&sl=en&tl=en&q=#{element}"
+
+          # Create variables for conditions below
+          first_definition = data["primaries"][0]["entries"][0]["terms"][0]["text"]
+
+          if first_definition == element.pluralize || first_definition.empty?  
+            data["primaries"][0]["entries"][0]["terms"][0]["text"] = data["primaries"][0]["entries"][1]["terms"][0]["text"]
+          end
+
+        # Push data to response array
         response << data
+   
       end
 
       # return array of hashes containing information for each word
