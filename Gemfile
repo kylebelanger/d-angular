@@ -2,12 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'pg'
+gem 'mysql2'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 
-gem 'wordnik'
 gem 'httparty'
 
 

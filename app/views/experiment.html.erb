@@ -5,6 +5,7 @@
 
         <p class="word">                <%= element["primaries"][0]["terms"][0]["text"] %> </p>
 
+        
         <% # Create sound variable for link %>
         <% sound = element["primaries"][0]["terms"][2]["text"] %>
 
@@ -16,6 +17,11 @@
 
            <ol>    
               <li role="definition">    <%= element["primaries"][0]["entries"][0]["terms"][0]["text"] %> </li>
+              
+              <% if !element["primaries"][0]["entries"][1]["terms"][0]["text"].empty? %>
+                <li role="definition">    <%= element["primaries"][0]["entries"][1]["terms"][0]["text"] %> </li>
+              <% end %>
+
           </ol>
 
           

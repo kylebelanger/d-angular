@@ -1,9 +1,9 @@
 development:
-  adapter: postgresql
-  database: diction
-  pool: 5
-  timeout: 5000
-  username: postgres
-  password: secrect
-  host: localhost
-  encoding: UTF8
+ adapter: mysql2
+ encoding: utf8
+ database: diction
+ pool: 5
+ timeout: 5000
+ username: root
+ password: secure
+ socket: /var/run/mysqld/mysqld.sock
