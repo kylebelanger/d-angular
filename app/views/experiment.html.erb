@@ -2,29 +2,36 @@
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
  
+        <p class="word"> <%= element["primaries"][0]["terms"][0]["text"] %> </p>
 
-        <p class="word">                <%= element["primaries"][0]["terms"][0]["text"] %> </p>
-
-        
-        <% # Create sound variable for link %>
-        <% sound = element["primaries"][0]["terms"][2]["text"] %>
-
-        
-            <p class="word-pronounce"><%= element["primaries"][0]["terms"][1]["text"] %></p>
-
-             
-        <p class="speech">              <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %></p>
+          <p class="word-pronounce"><%= element["primaries"][0]["terms"][1]["text"] %></p>   
+          <p class="speech"> <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %> </p>
 
            <ol>    
-              <li role="definition">    <%= element["primaries"][0]["entries"][0]["terms"][0]["text"] %> </li>
-              
-              <% if !element["primaries"][0]["entries"][1]["terms"][0]["text"].empty? %>
-                <li role="definition">    <%= element["primaries"][0]["entries"][1]["terms"][0]["text"] %> </li>
-              <% end %>
+              <li role="definition"> <%= element["primaries"][0]["entries"][0]["terms"][0]["text"] %> </li>
+                
+                <% # Handle error for non-existing elements %>
+                <% if (element["primaries"][0]["entries"][1]["terms"][0]["text"] rescue false) != false   &&    element["primaries"][0]["entries"][1]["terms"][0]["text"] != element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
+                  
+                    <li role="definition"> <%= element["primaries"][0]["entries"][1]["terms"][0]["text"] %> </li>
 
+                  <% elsif (element["primaries"][0]["entries"][2]["terms"][0]["text"] rescue false) != false %>
+                      <li role="definition"> <%= element["primaries"][0]["entries"][2]["terms"][0]["text"] %> </li>
+
+                <% end %>
           </ol>
-
           
     <% end %>
     <% # End loop %> 
 
+
+ 
+# Handle error for non-existing elements
+
+element["primaries"][0]["entries"][0]["terms"][0]["text"].each do |definition|
+ 
+  # need to also ensure item doesn't match previous iterator
+  if (definition rescue false) != false
+    puts definition
+
+end
