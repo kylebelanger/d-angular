@@ -10,15 +10,19 @@
            <ol>    
               <li role="definition"> <%= element["primaries"][0]["entries"][0]["terms"][0]["text"] %> </li>
                 
-                <% # Handle error for non-existing elements %>
-                <% if (element["primaries"][0]["entries"][1]["terms"][0]["text"] rescue false) != false   &&    element["primaries"][0]["entries"][1]["terms"][0]["text"] != element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
+                <% # Display second definition %>
+                <% # (could remove '.first(2)' to display ALL definitions // however, this is slow loading) %>
+                <% element["primaries"][0]["entries"].first(2).each do |definition| %>
                   
-                    <li role="definition"> <%= element["primaries"][0]["entries"][1]["terms"][0]["text"] %> </li>
+                  <%  # Attach definition to this element %>
+                  <%  definition = definition["terms"][0]["text"] %>
 
-                  <% elsif (element["primaries"][0]["entries"][2]["terms"][0]["text"] rescue false) != false %>
-                      <li role="definition"> <%= element["primaries"][0]["entries"][2]["terms"][0]["text"] %> </li>
+                    <% # Ensure second definition exists and not the same as first %>
+                    <% if (definition rescue false) != false && definition != element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
+                       <li role="definition"> <%= definition %> </li>
+                    <% end %>
 
-                <% end %>
+                <% end%>  
           </ol>
           
     <% end %>
@@ -26,12 +30,3 @@
 
 
  
-# Handle error for non-existing elements
-
-element["primaries"][0]["entries"][0]["terms"][0]["text"].each do |definition|
- 
-  # need to also ensure item doesn't match previous iterator
-  if (definition rescue false) != false
-    puts definition
-
-end
