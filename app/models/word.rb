@@ -1,5 +1,5 @@
 require 'httparty'
-require 'active_support/inflector'
+require 'active_support/inflector'  # For pluralize method
 
 
 class JsonpParser < HTTParty::Parser

@@ -3,30 +3,36 @@
     <% @word.each do |element|  %>
  
         <p class="word"> <%= element["primaries"][0]["terms"][0]["text"] %> </p>
+        <p class="speech"> <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %> </p>        
 
-          <p class="word-pronounce"><%= element["primaries"][0]["terms"][1]["text"] %></p>   
-          <p class="speech"> <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %> </p>
-
-           <ol>    
-              <li role="definition"> <%= element["primaries"][0]["entries"][0]["terms"][0]["text"] %> </li>
-                
-                <% # Display second definition %>
-                <% # (could remove '.first(2)' to display ALL definitions // however, this is slow loading) %>
-                <% element["primaries"][0]["entries"].first(2).each do |definition| %>
-                  
-                  <%  # Attach definition to this element %>
-                  <%  definition = definition["terms"][0]["text"] %>
-
-                    <% # Ensure second definition exists and not the same as first %>
-                    <% if (definition rescue false) != false && definition != element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
-                       <li role="definition"> <%= definition %> </li>
-                    <% end %>
-
-                <% end%>  
-          </ol>
+        <ol>
+          <% # Set nil definition for first evaluation %>
+          <% previous = nil %> 
           
+          <% # Loop through definitions (first two) %>
+          <% element["primaries"][0]["entries"].first(3).each do |word| %>
+            
+            <%  # Set definition and example variables %>
+            <%  definition = word["terms"][0]["text"] %>
+            <%  example    = word["entries"][0]["terms"][0]["text"] rescue false %>
+
+              <% # Ensure definition exists and is not the same as first %>
+              <% if (definition rescue false) != false && definition != previous %>
+
+                 <li role="definition"> <%= definition %> </li>
+
+                  <% if (example rescue false) != false %>
+                    <p style="color: dark-grey;">"<%= example %>"</p>
+                  <% end %>
+              <% end %>
+
+            <% # Variable to hold first definition (for recursive evaluations) %>
+            <% previous = element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
+
+          <% end%>  
+        </ol> 
+
     <% end %>
-    <% # End loop %> 
+    <% # End word loop %> 
 
 
- 
