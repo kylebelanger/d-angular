@@ -18,13 +18,13 @@
 
               <% # Ensure definition exists and is not the same as first %>
               <% if (definition rescue false) != false && definition != previous %>
-
                  <li role="definition"> <%= definition %> </li>
-
-                  <% if (example rescue false) != false %>
-                    <p style="color: dark-grey;">"<%= example %>"</p>
-                  <% end %>
               <% end %>
+
+                  <% # Display Example %>
+                  <% if (example rescue false) != false %>
+                    <p class="example">"<%= example %>"</p>
+                  <% end %>
 
             <% # Variable to hold first definition (for recursive evaluations) %>
             <% previous = element["primaries"][0]["entries"][0]["terms"][0]["text"] %>

@@ -16,16 +16,18 @@
 
        # Ensure definition and example exist and not the same as first 
        if (definition rescue false) != false && definition != firstDefinition
-          
           puts definition
-            
+       end 
+
           if (example rescue false) != false
             puts example
           end
-       end 
 
      # First definition and example (for second evaluation) 
      firstDefinition    = test[0]["primaries"][0]["entries"][0]["terms"][0]["text"]
 
    end  
 
+
+
+test[0]["primaries"][0]["entries"][0]["entries"][0]["terms"][0]["text"]
