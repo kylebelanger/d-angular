@@ -1,4 +1,5 @@
 
+
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
  
@@ -23,10 +24,11 @@
 
                   <% # Display Example %>
                   <% if (example rescue false) != false %>
+                    <% example.gsub!('x3cemx3e', '').gsub!('x3c/emx3e', '') %>
                     <p class="example">"<%= example %>"</p>
                   <% end %>
 
-            <% # Variable to hold first definition (for recursive evaluations) %>
+            <% # Variable to hold first definition (for next evaluation) %>
             <% previous = element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
 
           <% end%>  

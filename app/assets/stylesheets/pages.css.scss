@@ -226,6 +226,7 @@ nav[role="active"] {
 	height: 20px;
 	margin: 5px 0;
 	outline-color: #DCDCDC;
+	border: thin solid grey;
 }
 
 .button-submit {
@@ -233,8 +234,7 @@ nav[role="active"] {
 	padding: 5px;
 	width: 80px;
 	height: 35px;
-	border-radius: 10px;
-	border: thin solid #D6D6C2;
+	border: thin solid grey;
 	margin: 25px 0;
 	cursor: pointer;
 }

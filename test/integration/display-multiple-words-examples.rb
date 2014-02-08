@@ -1,5 +1,5 @@
 
-#   01/26
+#   02/08
 #   Working multiple definitions/examples in console
 #   -------------------------------------------------
 
@@ -20,6 +20,7 @@
        end 
 
           if (example rescue false) != false
+            example.gsub!('x3cemx3e', '').gsub!('x3c/emx3e', '')
             puts example
           end
 
@@ -31,3 +32,4 @@
 
 
 test[0]["primaries"][0]["entries"][0]["entries"][0]["terms"][0]["text"]
+
