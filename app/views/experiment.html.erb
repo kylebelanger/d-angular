@@ -2,8 +2,14 @@
 
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
+
+        <% # Audio element attached to word for event listener %>
+        <% audio = element["primaries"][0]["terms"][2]["text"] %>
  
-        <p class="word"> <%= element["primaries"][0]["terms"][0]["text"] %> </p>
+        <abbr title="Pronounce">
+          <p class="word" onclick="playSound(this, '<%= audio %>');"> 
+          <%= element["primaries"][0]["terms"][0]["text"] %> </p>
+        </abbr>
         <p class="speech"> <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %> </p>        
 
         <ol>
@@ -38,3 +44,20 @@
     <% # End word loop %> 
 
 
+<script>
+
+    // audio for words searched
+    function playSound(el,soundfile) {
+        var embed = document.getElementById("embed");
+        if (!embed) {
+            var embed = document.createElement("embed");
+                embed.id= "embed";
+                embed.setAttribute("src", soundfile);
+                embed.setAttribute("hidden", "true");
+            el.appendChild(embed);
+        } else {
+            embed.parentNode.removeChild(embed);
+        }
+    }
+
+</script>
