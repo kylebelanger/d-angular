@@ -499,11 +499,6 @@ nav[role="dashboard-nav"] .nav-arrow-up {
 
 @media all and (max-width: 650px) and (min-width: 0px) {
 
-	#content {
-		float: left;
-		margin: 120px 0 0 0;
-	}
-
 	p {
 		font-size: 10px;
 	}
@@ -550,8 +545,8 @@ nav[role="dashboard-nav"] .nav-arrow-up {
 	}
 
 	#search-results {
-		margin-left: -20px;
-		width: 105%;
+		margin-left: -15px;
+		width: 100%;
 
 			.word-container {
 				width: 100%;
