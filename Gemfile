@@ -9,7 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'httparty'
-
+gem 'nokogiri'
+gem 'mechanize'
 
 group :development do
 	gem 'annotate', '~> 2.4.1.beta'

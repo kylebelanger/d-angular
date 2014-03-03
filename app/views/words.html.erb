@@ -15,47 +15,29 @@
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
 
-    <% # set audio element attached to word %>
-    <% audio = element["primaries"][0]["terms"][2]["text"] %>
-
         <div class="word-container">
            
             <section class="top-container">
-                <p class="word" onclick="playSound(this, '<%= audio %>');">
-                                            <%= element["primaries"][0]["terms"][0]["text"] %></p>
-                <p class="speech">          <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %></p>
+                <p class="word">    <%= element["word"] %> </p>
+                <p class="speech">  <%= element["speech"] %> </p>        
             </section>
                 
             <section class="definition-container">
-                <ol>
-                    <% # Set nil definition for first evaluation %>
-                    <% previous = nil %> 
+                <ol>          
+                  <% # Loop through definitions %>
+                  <% element["definition"].each_with_index do |definition, index| %>
+
+                    <li role="definition">  <%= definition %> </li>
                       
-                      <% # Loop through definitions (first two) %>
-                      <% element["primaries"][0]["entries"].first(3).each do |word| %>
-                        
-                        <%  # Set definition and example variables %>
-                        <%  definition = word["terms"][0]["text"] %>
-                        <%  example    = word["entries"][0]["terms"][0]["text"] rescue false %>
-
-                          <% # Ensure definition exists and is not the same as first %>
-                          <% if (definition rescue false) != false && definition != previous %>
-                             <li role="definition"> <%= definition %> </li>
-                          <% end %>
-
-                              <% # Display Example %>
-                              <% if (example rescue false) != false %>
-                                <% example.gsub!('x3cemx3e', '').gsub!('x3c/emx3e', '') %>
-                                <p class="example">"<%= example %>"</p>
-                              <% end %>
-
-                        <% # Variable to hold first definition (for next evaluation) %>
-                        <% previous = element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
-
-                    <% end%> 
+                      <% if element["example"][index] != "false" %>
+                        <p role="example">  <%= element["example"][index] %> </p>
+                      <% end %>
+                  
+                  <% end%>
                 </ol>
             </section>
-                <span class="extra-information"></span>               
+            
+            <span class="extra-information"></span>               
 
         </div>
 

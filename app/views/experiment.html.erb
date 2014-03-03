@@ -4,39 +4,22 @@
     <% @word.each do |element|  %>
 
         <% # Audio element attached to word for event listener %>
-        <% audio = element["primaries"][0]["terms"][2]["text"] %>
+        <% #audio = element["primaries"][0]["terms"][2]["text"] %>
  
-        <abbr title="Pronounce">
-          <p class="word" onclick="playSound(this, '<%= audio %>');"> 
-          <%= element["primaries"][0]["terms"][0]["text"] %> </p>
-        </abbr>
-        <p class="speech"> <%= element["primaries"][0]["terms"][0]["labels"][0]["text"] %> </p>        
+        <p class="word">    <%= element["word"] %> </p>
+        <p class="speech">  <%= element["speech"] %> </p>        
+        <!-- <p class="word" onclick="playSound(this, '<%= audio %>');"> <%= element["primaries"][0]["terms"][0]["text"] %></p>-->
 
-        <ol>
-          <% # Set nil definition for first evaluation %>
-          <% previous = nil %> 
-          
-          <% # Loop through definitions (first two) %>
-          <% element["primaries"][0]["entries"].first(3).each do |word| %>
-            
-            <%  # Set definition and example variables %>
-            <%  definition = word["terms"][0]["text"] %>
-            <%  example    = word["entries"][0]["terms"][0]["text"] rescue false %>
+        <ol>          
+          <% # Loop through definitions %>
+          <% element["definition"].each_with_index do |definition, index| %>
 
-              <% # Ensure definition exists and is not the same as first %>
-              <% if (definition rescue false) != false && definition != previous %>
-                 <li role="definition"> <%= definition %> </li>
+            <li role="definition">  <%= definition %> </li>
+              
+              <% if element["example"][index] != "false" %>
+                <p role="example">  <%= element["example"][index] %> </p>
               <% end %>
-
-                  <% # Display Example %>
-                  <% if (example rescue false) != false %>
-                    <% example.gsub!('x3cemx3e', '').gsub!('x3c/emx3e', '') %>
-                    <p class="example">"<%= example %>"</p>
-                  <% end %>
-
-            <% # Variable to hold first definition (for next evaluation) %>
-            <% previous = element["primaries"][0]["entries"][0]["terms"][0]["text"] %>
-
+          
           <% end%>  
         </ol> 
 
@@ -61,3 +44,5 @@
     }
 
 </script>
+
+

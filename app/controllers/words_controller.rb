@@ -4,7 +4,7 @@ class WordsController < ApplicationController
 	end
 
 	def create
-		@word = Word.search(params[:search])
+		@word = Dictionary.define(params[:search])
 			render layout: "application", template: "words"
 	end
 
