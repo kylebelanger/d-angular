@@ -8,7 +8,6 @@ gem 'pg', '0.12.2'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-gem 'httparty'
 gem 'nokogiri'
 gem 'mechanize'
 

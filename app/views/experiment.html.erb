@@ -8,7 +8,6 @@
  
         <p class="word">    <%= element["word"] %> </p>
         <p class="speech">  <%= element["speech"] %> </p>        
-        <!-- <p class="word" onclick="playSound(this, '<%= audio %>');"> <%= element["primaries"][0]["terms"][0]["text"] %></p>-->
 
         <ol>          
           <% # Loop through definitions %>
@@ -16,8 +15,8 @@
 
             <li role="definition">  <%= definition %> </li>
               
-              <% if element["example"][index] != "false" %>
-                <p role="example">  <%= element["example"][index] %> </p>
+              <% if element["example"][index] != false %>
+                <p class="example">  <%= element["example"][index] %> </p>
               <% end %>
           
           <% end%>  
@@ -27,7 +26,11 @@
     <% # End word loop %> 
 
 
+
+
 <script>
+    // remove header drop effect
+    $('header#home-drop').removeAttr('id');
 
     // audio for words searched
     function playSound(el,soundfile) {
