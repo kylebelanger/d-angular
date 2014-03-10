@@ -1,4 +1,13 @@
 $(document).ready(function(){	
+
+    // page transition
+	$(".search-glass").click(function(event){
+
+		$("#welcome-message").hide();
+		$(".loader").show();
+	});
+
+
 	
 	// nav
 	$("nav[role='static']").click(				
