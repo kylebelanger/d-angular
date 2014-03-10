@@ -3,25 +3,31 @@
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
 
-        <% # Audio element attached to word for event listener %>
-        <% #audio = element["primaries"][0]["terms"][2]["text"] %>
- 
-        <p class="word">    <%= element["word"] %> </p>
-        <p class="speech">  <%= element["speech"] %> </p>        
+        <% if (element["error"] rescue false) == true %>
+            <hr><p> <%= element["word"] %> </p><hr>
 
-        <ol>          
-          <% # Loop through definitions %>
-          <% element["definition"].each_with_index do |definition, index| %>
+        <% else %>
 
-            <li role="definition">  <%= definition %> </li>
+            <% # Audio element attached to word for event listener %>
+            <% #audio = element["primaries"][0]["terms"][2]["text"] %>
+     
+            <p class="word">    <%= element["word"] %> </p>
+            <p class="speech">  <%= element["speech"] %> </p>        
+
+            <ol>          
+              <% # Loop through definitions %>
+              <% element["definition"].each_with_index do |definition, index| %>
+
+                <li role="definition">  <%= definition %> </li>
+                  
+                  <% if element["example"][index] != false %>
+                    <p class="example">  <%= element["example"][index] %> </p>
+                  <% end %>
               
-              <% if element["example"][index] != false %>
-                <p class="example">  <%= element["example"][index] %> </p>
-              <% end %>
-          
-          <% end%>  
-        </ol> 
+              <% end%>  
+            </ol> 
 
+        <% end %>
     <% end %>
     <% # End word loop %> 
 
