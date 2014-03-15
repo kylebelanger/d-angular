@@ -1,21 +1,24 @@
 require 'nokogiri'
 require 'open-uri'
 
-class Dictionary
+class Word < ActiveRecord::Base
+  attr_accessible :word
+  validates_uniqueness_of :word
 
+  # Define word(s)
   def self.define(search)
 
-    # Determine if search has multiple words
+    # Determine if multiple words
     if search.match(/[\s,]+/)
-    	search = search.split(/[\s,]+/)	 	 # Split and return array of words
+    	search = search.split(/[\s,]+/)	 	# Split and return array of words
     else 
-    	search = search.split      			   # String => array 
+    	search = search.split      			# String => array 
   	end 
 
   	# Array to hold response data of hashes
   	response = []
 
-  	# Loop through search words and get data for each
+  	# Loop through word(s) and get data for each
   	search.each do |element| 
       	
         # Load the document page, find data
@@ -23,8 +26,11 @@ class Dictionary
         # Create new hash object to hold data
         word_data = Hash.new  
 
-        # Get data if response from Nokogiri
+        # Get data if response from doc
         if doc != false
+
+          # Add word to database
+          term = Word.create(word: element)
       
           word_data["word"] = doc.at_xpath("/html/body/div[7]/div/div[2]/article/div/div/div[1]/div[1]/div/div/header/span/span").text
           word_data["speech"] = doc.at_xpath("/html/body/div[7]/div/div[2]/article/div/div/div[1]/div[1]/div/div/div[1]/div/section[1]/h3/span").text
@@ -61,5 +67,3 @@ class Dictionary
     return response
   end
 end
-
-
