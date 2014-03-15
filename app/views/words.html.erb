@@ -16,28 +16,36 @@
     <% @word.each do |element|  %>
 
         <div class="word-container">
-           
-            <section class="top-container">
-                <p class="word">    <%= element["word"] %> </p>
-                <p class="speech">  <%= element["speech"] %> </p>        
-            </section>
-                
-            <section class="definition-container">
-                <ol>          
-                  <% # Loop through definitions %>
-                  <% element["definition"].each_with_index do |definition, index| %>
 
-                    <li role="definition">  <%= definition %> </li>
+            <% # Ensure there is data for this word %>
+            <% if (element["error"] rescue false) != true %>
+               
+                <section class="top-container">
+                    <p class="word">    <%= element["word"] %> </p>
+                    <p class="speech">  <%= element["speech"] %> </p>        
+                </section>
+                    
+                <section class="definition-container">
+                    <ol>          
+                      <% # Loop through definitions %>
+                      <% element["definition"].each_with_index do |definition, index| %>
+
+                        <li role="definition">  <%= definition %> </li>
+                          
+                          <% if element["example"][index] != "false" %>
+                            <p class="example">  <%= element["example"][index] %> </p>
+                          <% end %>
                       
-                      <% if element["example"][index] != "false" %>
-                        <p role="example">  <%= element["example"][index] %> </p>
-                      <% end %>
-                  
-                  <% end%>
-                </ol>
-            </section>
-            
-            <span class="extra-information"></span>               
+                      <% end%>
+                    </ol>
+                </section>
+                
+                <span class="extra-information"></span>
+
+            <% # Catch errors %>
+            <% else %>    
+                <p> Unable to find <%= element["word"] %> </p>
+            <% end %>
 
         </div>
 

@@ -59,7 +59,7 @@ class Word < ActiveRecord::Base
 
         else
           word_data["error"] = true
-          word_data["word"] = "Unable to find #{element}"
+          word_data["word"] = element
         end
 
       	response.push(word_data)
