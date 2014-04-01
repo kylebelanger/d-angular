@@ -5,7 +5,7 @@ class WordsController < ApplicationController
 
 	def create
 		@word = Word.define(params[:search])
-			render layout: "application", template: "words"
+			render layout: "application", template: "experiment"
 	end
 
 	def destroy

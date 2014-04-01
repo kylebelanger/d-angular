@@ -11,19 +11,19 @@
             <% # Audio element attached to word for event listener %>
             <% #audio = element["primaries"][0]["terms"][2]["text"] %>
      
-            <p class="word">    <%= element["word"] %> </p>
-            <p class="speech">  <%= element["speech"] %> </p>        
+            <p class="word">    <%= element["data"][0]["groupResult"]["displayName"]. %> </p>
+            <p class="speech">  <%= element["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
 
             <ol>          
               <% # Loop through definitions %>
-              <% element["definition"].each_with_index do |definition, index| %>
+              <% element["data"][0]["dictionary"]["definitionData"][0]["meanings"].each_with_index do |element, index| %>
 
-                <li role="definition">  <%= definition %> </li>
+                <li role="definition">  <%= element["meaning"] %> </li>
                   
-                  <% if element["example"][index] != false %>
-                    <p class="example">  <%= element["example"][index] %> </p>
+                  <% if (element["examples"][index] rescue false) != false %>
+                    <p class="example">  <%= element["examples"][index] %> </p>
                   <% end %>
-              
+             
               <% end%>  
             </ol> 
 

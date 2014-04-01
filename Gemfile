@@ -10,6 +10,7 @@ gem 'turbolinks'
 
 gem 'nokogiri'
 gem 'mechanize'
+gem 'httparty'
 
 group :development do
 	gem 'annotate', '~> 2.4.1.beta'
