@@ -11,7 +11,7 @@
             <% # Audio element attached to word for event listener %>
             <% #audio = element["primaries"][0]["terms"][2]["text"] %>
      
-            <p class="word">    <%= element["data"][0]["groupResult"]["displayName"]. %> </p>
+            <p class="word">    <%= element["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
             <p class="speech">  <%= element["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
 
             <ol>          
