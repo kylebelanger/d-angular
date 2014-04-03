@@ -33,7 +33,7 @@ class Word < ActiveRecord::Base
         if response != false
 
           # Add word to database
-          term = Word.create(word: element)
+          #term = Word.create(word: element)
       
         # Catch response errors
         else
