@@ -1,10 +1,11 @@
 class WordsController < ApplicationController
 
 	def index
+		@word = Word.all
 	end
 
 	def create
-		@word = Word.define(params[:search])
+		@words = Word.define(params[:search])
 			render layout: "application", template: "experiment"
 	end
 

@@ -1,8 +1,9 @@
 Diction::Application.routes.draw do
   
-  # Index Routing
-  root to: 'application#index'
+  root to: 'words#index'	  # Index Routing
 
-  match '/search', 	to: "words#create"
+  resources :words
+
+  #match '/search', 	to: "words#show"
 
 end
