@@ -1,7 +1,8 @@
 class WordsController < ApplicationController
 
-	def search
-		@word = Word.find_or_create(params[:search])
+	def create
+		# Calls the search method to get data from API and save to local guest session
+		@word = Word.search(params[:search])
 	end
 
 	def index
@@ -12,10 +13,6 @@ class WordsController < ApplicationController
 
 	def show
 	  @word = Word.find(params[:id])
-	end
-
-	def create
-		#@words = Word.define(params[:search])
 	end
 
 	def destroy
