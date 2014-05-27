@@ -1,8 +1,9 @@
 class WordsController < ApplicationController
 
 	def create
-		# Calls the search method to get data from API and save to local guest session
+		# Calls search method to get data from API and save word to guest session
 		@word = Word.search(params[:search])
+		redirect_to words_path
 	end
 
 	def index
@@ -16,6 +17,14 @@ class WordsController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	def new
+	   @word = Word.new
+	end
+
+	def edit
+	  @word = Word.find(params[:id])
 	end
 
 end
