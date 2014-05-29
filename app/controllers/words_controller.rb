@@ -3,7 +3,7 @@ class WordsController < ApplicationController
 	def create
 		# Calls search method to get data from API and save word to guest session
 		@word = Word.search(params[:search])
-		redirect_to words_path
+		#redirect_to words_path
 	end
 
 	def index

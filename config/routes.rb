@@ -1,10 +1,11 @@
 Diction::Application.routes.draw do
   
-  get "users/new"
 
-  root to: 'words#index'	  				# Index Routing
-  match '/search', 	to: "words#create"		# Search
+  root to: 'application#index'	  							# Index Routing
+  match '/search', 	to: "words#new",	via: 'get'			# Search
+  match '/register',  to: 'users#new',   via: 'get'			# Register
 
-  resources :words							
+  resources :words		
+  resources :users					
 
 end
