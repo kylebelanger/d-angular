@@ -3,20 +3,17 @@
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
 
-        <% if (element["error"] rescue false) == true %>
-            <hr><p> <%= element["word"] %> </p><hr>
+        <p><%= element.word %></p>
 
-        <% else %>
 
-            <% # Audio element attached to word for event listener %>
-            <% #audio = element["primaries"][0]["terms"][2]["text"] %>
-     
-            <p class="word">    <%= element["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
-            <p class="speech">  <%= element["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
+        <% data = define(element.word) %>
+
+            <p class="word">    <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
+            <p class="speech">  <%= data[0]["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
 
             <ol>          
               <% # Loop through definitions %>
-              <% element["data"][0]["dictionary"]["definitionData"][0]["meanings"].each_with_index do |element, index| %>
+              <% data[0]["data"][0]["dictionary"]["definitionData"][0]["meanings"].each_with_index do |element, index| %>
 
                 <li role="definition">  <%= element["meaning"] %> </li>
                   
@@ -27,9 +24,14 @@
               <% end%>  
             </ol> 
 
-        <% end %>
+        <p>
+
     <% end %>
     <% # End word loop %> 
+
+    <p><%= link_to "New Word", new_word_path %></p>
+
+
 
 
 
@@ -38,19 +40,6 @@
     // remove header drop effect
     $('header#home-drop').removeAttr('id');
 
-    // audio for words searched
-    function playSound(el,soundfile) {
-        var embed = document.getElementById("embed");
-        if (!embed) {
-            var embed = document.createElement("embed");
-                embed.id= "embed";
-                embed.setAttribute("src", soundfile);
-                embed.setAttribute("hidden", "true");
-            el.appendChild(embed);
-        } else {
-            embed.parentNode.removeChild(embed);
-        }
-    }
 
 </script>
 

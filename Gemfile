@@ -5,7 +5,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'pg', '0.12.2'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.1'
 gem 'turbolinks'
 
 gem 'nokogiri'
