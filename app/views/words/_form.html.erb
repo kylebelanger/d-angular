@@ -1,7 +1,10 @@
-<%= form_for @word do |f| %>
+<div id="new_word">
+<%= form_for @word, :remote => true do |f| %>
   <p>
     <%= f.label :word %><br />
     <%= f.text_field :word %>
   </p>
   <p><%= f.submit %></p>
 <% end %>
+</div>
+

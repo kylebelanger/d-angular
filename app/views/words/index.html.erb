@@ -1,15 +1,17 @@
 
+    <p><%= link_to "New Word", new_word_path, :remote => true %></p>
+    <div id="new_word"></div>
+
+
+    
 
     <% # Loop through word elements %>
     <% @word.each do |element|  %>
 
-        <p><%= element.word %></p>
-
-
         <% data = define(element.word) %>
 
           <% if data[0][:error] == true %>
-            <p> Error: Could not find data for word "<%= data[0][:word] %>"</p>
+            <br><br><br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br><br><br>
           <% else %>
 
               <p class="word">    <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
@@ -32,7 +34,6 @@
     <% end %>
     <% # End word loop %> 
 
-    <p><%= link_to "New Word", new_word_path %></p>
 
 
 

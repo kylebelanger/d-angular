@@ -1,11 +1,11 @@
 class WordsController < ApplicationController
-
+	respond_to :html, :js
 
 	def create
 	  @word = Word.new(params[:word]) 
 	  if @word.save
 	      flash[:success] = " - Successfully created word"
-	      redirect_to words_path
+		  respond_with(@word, :location => words_path)
 	  else
 	    render 'new'
 	  end 
@@ -13,7 +13,7 @@ class WordsController < ApplicationController
 
 	def index
 		#if user
-			@word = Word.all
+			@word = Word.order('created_at DESC').all
 		#end
 	end
 
@@ -26,6 +26,7 @@ class WordsController < ApplicationController
 
 	def new
 	   @word = Word.new
+	   respond_with(@word)
 	end
 
 	def edit

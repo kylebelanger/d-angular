@@ -1,0 +1,12 @@
+var form = $('#new_word');
+
+
+  // Add the new word to the beginning of the #comment-container division
+  $("#comments-container").prepend("<%= escape_javascript(render "@word") %>");
+
+  // empty the form for new submission
+  form.find('input:text,textarea').val('');
+
+
+
+
