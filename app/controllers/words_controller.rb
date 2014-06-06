@@ -4,10 +4,10 @@ class WordsController < ApplicationController
 	def create
 	  @word = Word.new(params[:word]) 
 	  if @word.save
-	      flash[:success] = "Welcome to your account dashboard!"
-	      redirect_to @word
+	      flash[:success] = " - Successfully created word"
+	      redirect_to words_path
 	  else
-	    #render 'new'
+	    render 'new'
 	  end 
 	end
 

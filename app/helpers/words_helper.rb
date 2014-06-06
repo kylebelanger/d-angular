@@ -12,12 +12,12 @@ module WordsHelper
       # Set variables
       base_url = "https://www.googleapis.com/scribe/v1/research?key=AIzaSyDqVYORLCUXxSv7zneerIgC2UYMnxvPeqQ&dataset=dictionary&dictionaryLanguage=en&query="
       # Get the payload
-      response = HTTParty.get("#{base_url}" + "#{word}") rescue false
+      response = HTTParty.get("#{base_url}" + "#{word}")
       
       # Catch response errors
-      if response == false
-        data[0]["error"] = true
-        data[0]["error"]["word"] = element
+      if response["data"] == nil
+        error = { error: true, word: word }
+        data.push(error)        
       else
         # Push response to data array
         data.push(response)
