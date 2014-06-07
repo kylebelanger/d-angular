@@ -1,12 +1,5 @@
-var form = $('#new_word');
-
-
-  // Add the new word to the beginning of the #comment-container division
-  $("#comments-container").prepend("<%= escape_javascript(render "@word") %>");
-
-  // empty the form for new submission
-  form.find('input:text,textarea').val('');
-
-
-
+  $('#words').append( '<%= escape_javascript(
+    render @word
+  ) %>' );
+  $('#new-word-form-container').find('input:not(:submit),select,textarea').val('');
 

@@ -1,16 +1,16 @@
 
 
     <% # Loop through word elements %>
-    <p><%= @word.id %></p>
-    <p><%= @word.word %></p>
+  	<%= render @word %>
 
+
+<%= link_to 'Back', words_path %>
 
 
 
 <script>
     // remove header drop effect
     $('header#home-drop').removeAttr('id');
-
 </script>
 
 

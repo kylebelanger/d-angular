@@ -146,6 +146,7 @@ DEPENDENCIES
   annotate (~> 2.4.1.beta)
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
+  coffee-script
   httparty (= 0.11.0)
   jquery-rails (~> 2.1)
   mechanize

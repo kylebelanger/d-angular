@@ -1,5 +1,7 @@
-<h1>New Word</h1>
-
-<%= render 'form' %>
-
-<p><%= link_to "Back to List", words_path %></p>
+<div id='new-word-form-container'>
+  <h1>New word</h1>
+  
+  <%= render 'form' %>
+  
+  <%= link_to 'Cancel', words_path, :id => 'cancel-button' %>
+</div>

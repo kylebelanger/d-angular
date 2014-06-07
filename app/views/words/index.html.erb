@@ -1,40 +1,10 @@
 
-    <p><%= link_to "New Word", new_word_path, :remote => true %></p>
-    <div id="new_word"></div>
+    <%= render 'new_word_links' %>
 
 
-    
-
-    <% # Loop through word elements %>
-    <% @word.each do |element|  %>
-
-        <% data = define(element.word) %>
-
-          <% if data[0][:error] == true %>
-            <br><br><br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br><br><br>
-          <% else %>
-
-              <p class="word">    <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
-              <p class="speech">  <%= data[0]["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
-
-              <ol>          
-                <% # Loop through definitions %>
-                <% data[0]["data"][0]["dictionary"]["definitionData"][0]["meanings"].each_with_index do |element, index| %>
-
-                  <li role="definition">  <%= element["meaning"] %> </li>
-                    
-                    <% if (element["examples"][index] rescue false) != false %>
-                      <p class="example">  <%= element["examples"][index] %> </p>
-                    <% end %>
-               
-                <% end%>  
-              </ol> 
-
-          <% end %>
-    <% end %>
-    <% # End word loop %> 
-
-
+    <div id="words">
+        <%= render @words %>
+    </div>
 
 
 

@@ -1,10 +1,27 @@
-<div id="new_word">
-<%= form_for @word, :remote => true do |f| %>
-  <p>
-    <%= f.label :word %><br />
-    <%= f.text_field :word %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
-</div>
+<%= form_for(@word, :remote => (params[:action] == 'new' ? true : false)) do |f| %>
+  <% if @word.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@word.errors.count, "error") %> prohibited this word from being saved:</h2>
 
+      <ul>
+      <% @word.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend class='required'>
+      Required fields
+    </legend>
+    <div class="field">
+      <%= f.label :word, :class => 'required' %><br />
+      <%= f.text_field :word, :required => true %>
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit :disable_with => 'Submitting...' %>
+  </div>
+<% end %>
