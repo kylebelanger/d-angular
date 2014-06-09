@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
 	def index
 		render layout: "application", template: "index"
+		@word = Word.new(:word => params[:word])
+
 	end
 
 end

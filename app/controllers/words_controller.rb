@@ -7,6 +7,11 @@ class WordsController < ApplicationController
     @words = Word.order('created_at DESC').all
   end
 
+  def search
+    @word = Word.create(:word => params[:word])
+    redirect_to words_path
+  end
+
   # GET /words/1
   # GET /words/1.xml
   def show

@@ -4,12 +4,13 @@
 	<div class="search">
 		<abbr title="Search">
 		
-		<%= form_tag("/search", method: "get") do %>
-		    <%= text_field_tag :search, params[:search], :class => "search-form", 
-		    		:placeholder => 'Enter words to find definitions...', :autofocus => true %>
 
-		    <%= submit_tag nil, :class => "search-glass", :src => "search-icon.png", :type => "image" %>
-		<% end %>
+<%= form_tag("/search") do %>
+	<%= text_field_tag :word, params[:word] %>
+	 <%= submit_tag("Search") %>
+<% end %>
+
+
 
 		</abbr>									
 	</div>
