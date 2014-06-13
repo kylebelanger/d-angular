@@ -9,8 +9,8 @@ gem 'jquery-rails', '~> 2.1'
 gem 'coffee-script'
 gem 'turbolinks'
 
-gem 'nokogiri'
-gem 'mechanize'
+#gem 'nokogiri'
+#gem 'mechanize'
 gem 'httparty', '0.11.0'
 
 group :development do
