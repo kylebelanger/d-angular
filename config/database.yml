@@ -15,3 +15,13 @@ test:
  password: secure
  database: diction_test
  pool: 5
+
+production:
+ adapter: postgresql
+ encoding: unicode
+ host: localhost
+ username: postgres
+ password: secure
+ database: diction_test
+ pool: 5
+
