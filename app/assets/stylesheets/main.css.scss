@@ -364,21 +364,22 @@ footer #footer-container span {
 }
 
 .word-container {
-	width: 614px;
+	float: left;
+	width: 650px;
 	height: auto;
 	border: thin dotted #DCDCDC;
-	margin: 15px 0;
+	margin: 15px 0 0 0;
 	padding: 5px 10px 10px 10px;
 	resize:horizontal;
 	overflow:auto;
-	
+
 	/*--- word styling ---*/
 	font-family: Times New Roman;
 }
 
 .word {
 	font-size: 28px;
-	margin: 8px 0 -10px 0;
+	margin: 10px 0;
 }
 
 .word-pronounce {

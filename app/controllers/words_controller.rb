@@ -20,7 +20,6 @@ class WordsController < ApplicationController
   # GET /words/new
   def new
     @word = Word.new
-    #respond_with(@word, :layout => false)
     respond_with do |format|
       format.html { render :layout => ! request.xhr? }
     end
@@ -34,8 +33,7 @@ class WordsController < ApplicationController
   # POST /words
   def create
     @word = Word.create(params[:word])
-    respond_with(@word)
-    #redirect_to words_path unless request.xhr?
+    respond_with(@word)   
   end
 
   # PUT /words/1

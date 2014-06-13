@@ -1,10 +1,10 @@
-<div class='word' id='word-<%= word.id %>'>
+<div class='word word-container' id='word-<%= word.id %>'>
 
 
         <% data = define(word.word) %>
 
           <% if data[0][:error] == true %>
-            <br><br><br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br><br><br>
+            <br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br>
           <% else %>
 
               <p class="word">    <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
@@ -25,8 +25,8 @@
 
           <% end %>
 
-  <p><%= link_to 'Show', word %></p>
-  <p><%= link_to 'Edit', edit_word_path(word) %></p>
+  <!--<p><% link_to 'Show', word %></p>-->
+  <!--<p><% link_to 'Edit', edit_word_path(word) %></p>-->
   <p><%= link_to 'Destroy', word, :confirm => 'Are you sure?', :method => :delete, :remote => true %></p>
 </div>
 

@@ -11,13 +11,14 @@
     </div>
   <% end %>
 
-  <fieldset>
-    <div class="field">
-      <%= f.text_field :word, :required => true %>
-    </div>
-  </fieldset>
+    <div class="search">
 
-  <div class="actions">
-    <%= f.submit :disable_with => 'Submitting...' %>
+    <%= f.text_field :word, :class => "search-form", :placeholder => 'Enter words to find definitions...', 
+                                                                :autofocus => true, :required => true %>
+
+    <%= f.submit :disable_with => 'Submitting...', :class => "search-glass", :src => "search-icon.png", :type => "image" %>
+
   </div>
+
+
 <% end %>
