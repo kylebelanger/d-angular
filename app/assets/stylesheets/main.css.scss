@@ -349,6 +349,15 @@ footer #footer-container span {
 	margin: 5px 0 5px 10px;
 }
 
+footer #footer-container a {
+	text-decoration: none;
+}
+
+footer #footer-container a:hover {
+	text-decoration: underline;
+}
+
+
 
 
 
@@ -413,8 +422,6 @@ li[role="definition"] {
 	color: #4C4C4C;
 	margin: -2px 0 15px 0;
 }
-
-
 
 
 
@@ -503,10 +510,17 @@ li[role="definition"] {
 	#search-results {
 		margin-left: -15px;
 		width: 100%;
+	}
 
-			.word-container {
-				width: 100%;
-			}
+	.word-container {
+		float: left;
+		width: 100%;
+		border: none;
+		margin: 0 0 0 -10px;
+		padding: 5px 10px 10px 10px;
+	resize:none;
+	overflow:hidden;
+
 	}
 
 	 #welcome-message p {
@@ -517,3 +531,4 @@ li[role="definition"] {
 		font-size: 10px;
 	}
 }
+
