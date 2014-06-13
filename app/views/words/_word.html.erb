@@ -7,6 +7,8 @@
             <br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br>
           <% else %>
 
+          <p class="word-minimal"><%= word.word %></p>
+
               <p class="word">    <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
               <p class="speech">  <%= data[0]["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
 

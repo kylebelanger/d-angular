@@ -382,6 +382,11 @@ footer #footer-container span {
 	margin: 10px 0;
 }
 
+.word-minimal {
+	font-size: 18px;
+	display: none;	
+}
+
 .word-pronounce {
 	margin-bottom: 0px;
 }
@@ -409,38 +414,8 @@ li[role="definition"] {
 	margin: -2px 0 15px 0;
 }
 
-nav[role="dashboard-nav"] {
-	float: left;
-	width: 100%;
-	border-bottom: thin dotted #DCDCDC;
-	padding-bottom: 10px;
-	margin: -25px 0 20px 0;
-}
 
-nav[role="dashboard-nav"] .text {
-	float: left;
-	font-size: 12.5px;
-	margin: 0 40px 0 0;
-}
 
-nav[role="dashboard-nav"] .search-glass {
-	margin: 5px 0 0 0;
-}
-
-nav[role="dashboard-nav"] .search-glass {
-	margin: 5px 0 0 0;
-}
-
-nav[role="dashboard-nav"] .nav-arrow-up {
-	width: 0; 
-	height: 0; 
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-top: 5px solid #DCDCDC;
-	float: right;
-	-moz-margin: 5px 0 0 5px;
-	margin: -10px 0 0 5px;
-}
 
 
 
