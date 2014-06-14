@@ -32,8 +32,13 @@ class WordsController < ApplicationController
 
   # POST /words
   def create
-    @word = Word.create(params[:word])
-    respond_with(@word)   
+  split = Word.split_words(params[:word][:word])
+
+   @word = split.map do |w|
+     Word.create(word: w)
+   end
+
+   respond_with(@word)  
   end
 
   # PUT /words/1
