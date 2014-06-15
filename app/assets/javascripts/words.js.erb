@@ -1,15 +1,29 @@
 $(document)
-  .delegate('#new-word-link', 'ajax:success', function(e, data, status, xhr){
-    var $this = $(this),
-        $container = $('#new-word-links'),
-        $responseText = $(xhr.responseText),
-        $cancelButton = $responseText.find('#cancel-button');
-    $container.replaceWith($responseText)
-    $cancelButton.click(function(e){
-      $cancelButton.parent().replaceWith($container);
-      e.preventDefault();
-    });
-  })
+  
+
+  .delegate('#new-word-link', 'ajax:success', function(e, data, status, xhr)
+    {
+      
+      var $this = $(this),
+          // new word links container
+          $container = $('#new-word-links'),
+          $responseText = $(xhr.responseText),
+          // cancel button
+          $cancelButton = $responseText.find('#cancel-button');
+
+      // figuring out what this does exactly?
+      $container.replaceWith($responseText)
+
+      $cancelButton.click(function(e) 
+        {
+          $cancelButton.parent().replaceWith($container);
+          e.preventDefault();
+        }
+      );
+    
+    })
+
+    
   .delegate('form[data-remote]', 'ajax:aborted:required', function(){
     var $form = $(this),
         errorDivId = 'ajax-validation-errors',
