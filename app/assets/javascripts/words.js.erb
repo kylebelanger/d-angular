@@ -1,12 +1,16 @@
+// Skeleton code from JangoSteve/Rails-jQuery-Demo
+
 $(document)
   
-
+  // this function using unobtrusive bindings for the Words view
+  // everything works, however, still figuring out the paremater variables below
   .delegate('#new-word-link', 'ajax:success', function(e, data, status, xhr)
     {
       
       var $this = $(this),
           // new word links container
           $container = $('#new-word-links'),
+          // xhr?
           $responseText = $(xhr.responseText),
           // cancel button
           $cancelButton = $responseText.find('#cancel-button');
