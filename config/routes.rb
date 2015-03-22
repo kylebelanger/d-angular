@@ -1,11 +1,7 @@
-Diction::Application.routes.draw do
-  
+Rails.application.routes.draw do
+	resources :words
 
-  root to: 'application#index'	  							# Index Routing
-  match '/search', 	to: "words#search"						# Search
-  match '/register',  to: 'users#new',   via: 'get'			# Register
-
-  resources :words		
-  resources :users					
+  	root to: 'application#index'	  							# Index Routing
+  	post '/search', to: "words#search"							# Search
 
 end

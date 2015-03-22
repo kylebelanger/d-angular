@@ -54,4 +54,14 @@ class WordsController < ApplicationController
     @word = Word.destroy(params[:id])
   end
 
+
+    private
+
+      def word_params
+        # It's mandatory to specify the nested attributes that should be whitelisted.
+        # If you use `permit` with just the key that points to the nested attributes hash,
+        # it will return an empty hash.
+        params.require(:word).permit(:word)
+      end
+
 end

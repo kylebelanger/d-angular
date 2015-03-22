@@ -1,19 +1,22 @@
 <div class='word word-container' id='word-<%= word.id %>'>
 
-
         <% data = define(word.word) %>
 
-          <% if data[0][:error] == true %>
-            <br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br>
-          <% else %>
+          <% # Parse the JSON response %>
+          <% begin %>
 
-          <p class="word-minimal"><%= word.word %></p>
+            <!-- display basic information -->
+            <p class="word-minimal"><%= word.word %></p>
 
-              <p class="word">    <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> </p>
-              <p class="speech">  <%= data[0]["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> </p>        
+              <p class="word">
+                <%= data[0]["data"][0]["groupResult"]["displayName"].gsub!("<b>", "").gsub!("</b>", "") %> 
+              </p>
+              <p class="speech">
+                <%= data[0]["data"][0]["dictionary"]["definitionData"][0]["wordForms"][0]["form"] %> 
+              </p>        
 
+              <% # Loop through definitions %>
               <ol>          
-                <% # Loop through definitions %>
                 <% data[0]["data"][0]["dictionary"]["definitionData"][0]["meanings"].each_with_index do |element, index| %>
 
                   <li role="definition">  <%= element["meaning"] %> </li>
@@ -24,8 +27,14 @@
                
                 <% end%>  
               </ol> 
+              <% # End loop %>
 
+          <% # Catch any unexpected errors %>
+          <% rescue %>
+              <br><p> Error: Could not find data for word "<%= data[0][:word] %>"</p><br>
           <% end %>
+          <% # End parse %>
+
 
   <!--<p><% link_to 'Show', word %></p>-->
   <!--<p><% link_to 'Edit', edit_word_path(word) %></p>-->

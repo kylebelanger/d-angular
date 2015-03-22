@@ -1,7 +1,6 @@
   class Word < ActiveRecord::Base
-    
-    attr_accessible :word
-    validates_uniqueness_of :word
+
+    validates :word, uniqueness: {scope: :word}, presence: true
 
     # Used for creating multiple words on landing page
     def self.create_words(word)

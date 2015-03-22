@@ -1,9 +1,28 @@
-== Diction
+== README
 
-A simple web-app for searching and displaying multiple vocabulary terms from 
-Oxford's definition data. The same data is used for Google's (define: x) search queries.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Use a comma to search multiple words at once: 
-epitome, fallacy, pensive, dismal
+Things you may want to cover:
 
-http://dictionproject.heroku.com
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
