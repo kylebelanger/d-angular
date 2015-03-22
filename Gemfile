@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2'
 gem 'pg'
+gem 'heroku'
 
 gem 'responders', '~> 2.0' 
 gem 'httparty', '0.11.0'
