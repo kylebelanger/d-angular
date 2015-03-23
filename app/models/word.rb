@@ -1,24 +1,25 @@
-  class Word < ActiveRecord::Base
+class Word < ActiveRecord::Base
 
-    validates :word, uniqueness: {scope: :word}, presence: true
+  belongs_to :list
+  validates :word, uniqueness: {scope: :word}, presence: true
 
-    # Used for creating multiple words on landing page
-    def self.create_words(word)
-      split = split_words(word)
+  # Used for creating multiple words on landing page
+  def self.create_words(word)
+    split = split_words(word)
 
-      split.each do |w|
-        Word.create :word => w
-        #puts w
-      end
+    split.each do |w|
+      Word.create :word => w
+      #puts w
     end
-
-    # Split Words method splits words seperated by a comma or space
-    def self.split_words(word)
-      word = word.split
-
-      word.each do |w|
-        w = w.gsub!(",", "")
-      end
-    end
-
   end
+
+  # Split Words method splits words seperated by a comma or space
+  def self.split_words(word)
+    word = word.split
+
+    word.each do |w|
+      w = w.gsub!(",", "")
+    end
+  end
+
+end

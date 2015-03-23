@@ -55,6 +55,8 @@ GEM
     erubis (2.7.0)
     excon (0.44.4)
     execjs (2.4.0)
+    foreigner (1.7.2)
+      activerecord (>= 3.0.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     heroku (3.30.3)
@@ -176,6 +178,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  foreigner
   heroku
   httparty (= 0.11.0)
   jbuilder (~> 2.0)
