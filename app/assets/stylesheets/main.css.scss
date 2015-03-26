@@ -230,8 +230,15 @@ nav[role="active"] {
 
 /* initial state // changes w/ JS script */
 
-nav[role="active"] #register {
+nav[role="active"] .register {
 	display: none;
+}
+
+.alert {
+	float: left;
+	width: 100%;
+	height: 70px;
+	background-color: green;
 }
 
 

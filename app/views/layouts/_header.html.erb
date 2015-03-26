@@ -30,17 +30,21 @@
 		</form>		
 
 		<!-- create account -->
-		<form class="login-register-form" id="register">
-				<label>Email</label>
-					<input type="text" name="keyword" required>
-				<label>Username</label>
-					<input type="text" name="keyword" autofocus="true" required>
-				<label>Password</label>
-					<input type="password" required>
-				<label>Password Confirmation</label>
-					<input type="password" required>
-			<button class="button-submit">Register</button>
-		</form>
+	    <%= form_for User.new, :html => {class: "login-register-form register"} do |f| %>
+	      <%= f.label :name %>
+	      <%= f.text_field :name %>
+
+	      <%= f.label :email %>
+	      <%= f.email_field :email %>
+
+	      <%= f.label :password %>
+	      <%= f.password_field :password %>
+
+	      <%= f.label :password_confirmation, "Confirmation" %>
+	      <%= f.password_field :password_confirmation %>
+
+	      <%= f.submit "Create my account", :html => {class: "button-submit"} %>
+	    <% end %>
 																																			
 	</div>
 </nav>
