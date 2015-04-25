@@ -1,0 +1,13 @@
+body {
+	background-color: #757575;
+	color: #fff;
+}
+
+table {
+	width: 400px;
+}
+
+table tr td {
+	width: 300px;
+	float: left;
+}
