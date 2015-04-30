@@ -1,4 +1,4 @@
-angular.module('flapperNews', ['ui.router'])
+angular.module('d-angular', ['ui.router'])
 
 // Set routing/configuration
 // ------------------------------
@@ -14,11 +14,11 @@ angular.module('flapperNews', ['ui.router'])
 		  controller: 'MainCtrl'
 		})
 
-		// Posts state
-		.state('posts', {
-		  url: '/posts{id}',
-		  templateUrl: '/static/posts.html',
-		  controller: 'PostsCtrl'
+		// Lists state
+		.state('lists', {
+		  url: '/lists{id}',
+		  templateUrl: '/static/lists.html',
+		  controller: 'ListsCtrl'
 		})
 
 		$urlRouterProvider.otherwise('home');
@@ -26,13 +26,13 @@ angular.module('flapperNews', ['ui.router'])
 ])
 
 
-// Posts factory
+// lists factory
 // Factories are used to organize and share code across the app.
 // ------------------------------
-.factory('posts', [function(){
+.factory('lists', [function(){
 
-	// create new obect with array of posts
-	var o = { posts: [] };
+	// create new obect with array of lists
+	var o = { lists: [] };
   	return o;
 
 }])
@@ -40,28 +40,25 @@ angular.module('flapperNews', ['ui.router'])
 
 // Main controller
 // ------------------------------
-.controller('MainCtrl', ['$scope', 'posts',
+.controller('MainCtrl', ['$scope', 'lists',
 
 	// Main scope (used in views)
-	function($scope, posts){
+	function($scope, lists){
 		
-		// array of posts
-		$scope.posts = posts.posts;
+		// array of lists
+		$scope.lists = lists.lists;
 
-		// Add post function
-		$scope.addPost = function(){
+		// Add list function
+		$scope.addList = function(){
 			// prevent empty titles
 			if(!$scope.title || $scope.title === '') { 
 				return;
 			}
-			// push new post to array
-			$scope.posts.push({
+			// push new list to array
+			$scope.lists.push({
 				title: $scope.title, 
 				date: new Date().toJSON().slice(0,10),
-				comments: [
-					{author: 'Joe', body: 'Cool post!'},
-					{author: 'Bob', body: 'Great idea but everything is wrong!'}
-				]
+				words: []
 			});
 
 			// reset title
@@ -71,28 +68,36 @@ angular.module('flapperNews', ['ui.router'])
 
 ])
 
-// Posts controller
+// Lists controller
 // ------------------------------
-.controller('PostsCtrl', ['$scope', '$stateParams', 'posts',
+.controller('ListsCtrl', ['$scope', '$stateParams', 'lists', '$http',
 
 	// Main scope (used in views)
-	function($scope, $stateParams, posts){
-		$scope.post = posts.posts[$stateParams.id];
+	function($scope, $stateParams, lists, $http){
+		// get list by ID
+		$scope.list = lists.lists[$stateParams.id];
 
 		// Add comment function
-		$scope.addComment = function(){
-			// prevent empty titles
-			if(!$scope.body || $scope.body === '') { 
-				return;
-			}
-			// push new post to array
-			$scope.post.comments.push({
-				body: $scope.body,
-				author: "user" 
-			});
+		$scope.addWord = function(){
 
-			// reset title
-			$scope.body = '';
+			// API URL
+			var api_url = "https://www.googleapis.com/scribe/v1/research?key=AIzaSyDqVYORLCUXxSv7zneerIgC2UYMnxvPeqQ&dataset=dictionary&dictionaryLanguage=en&query=";
+
+			// get data from API
+			$http.get(api_url + $scope.title)
+				// handle successful
+				.success(function (response) {
+					// push new list to array
+					$scope.list.words.push({
+						title: $scope.title,
+						date: new Date().toJSON().slice(0,10),
+						// meta
+						display: response.data[0]["groupResult"]["displayName"],
+						sound: "",
+						speech: "",
+						definitions: response.data[0]["dictionary"]["definitionData"][0]["meanings"]
+					});
+				});
 		};
 	}
 

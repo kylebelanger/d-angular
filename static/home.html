@@ -1,22 +1,22 @@
 <div class="page-header">
-  <h1>Aloof News</h1>
+  <h1>Lists</h1>
 </div>
 
 
-  <!-- add a post -->
-  <form ng-submit="addPost()">
+  <!-- add a list -->
+  <form ng-submit="addList()">
     <input type="text" ng-model="title"></input>
-    <button type="submit">Post</button>
+    <button type="submit">Add</button>
   </form>
   <!-- end add -->
 
-  <!-- list all posts -->
-  <table ng-repeat="post in posts | orderBy: 'date':true">
-    <tr>
-      <td>{{post.title}}</td>
+  <!-- list all lists -->
+  <table>
+    <tr ng-repeat="list in lists | orderBy: 'date':true">
+      <td>{{list.title}}</td>
       <span ng-bind="title"></span>
-      <td>{{post.date}}</td>
-      <td><a href="#/posts{{$index}}">Comments</a></td>
+      <td>{{list.date}}</td>
+      <td><a href="#/lists{{$index}}">Words</a></td>
     </tr>
   </table>
   <!-- end list -->
