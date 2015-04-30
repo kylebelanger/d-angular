@@ -78,6 +78,22 @@ angular.module('flapperNews', ['ui.router'])
 	// Main scope (used in views)
 	function($scope, $stateParams, posts){
 		$scope.post = posts.posts[$stateParams.id];
+
+		// Add comment function
+		$scope.addComment = function(){
+			// prevent empty titles
+			if(!$scope.body || $scope.body === '') { 
+				return;
+			}
+			// push new post to array
+			$scope.post.comments.push({
+				body: $scope.body,
+				author: "user" 
+			});
+
+			// reset title
+			$scope.body = '';
+		};
 	}
 
 ]);
