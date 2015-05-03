@@ -2,7 +2,7 @@
 
 <!-- add word -->
 <form ng-submit="addWord()">
-  <input type="text" ng-model="title"></input>
+  <input type="text" ng-model="word"></input>
   <button type="submit">Add</button>
 </form>
 <!-- end add -->
@@ -13,11 +13,11 @@
   {{ word.date }}
 
     <!-- definitions -->
-    <ol ng-repeat="d in word.definitions">
-    	<li>{{ d.meaning }}</li>
+    <ol ng-repeat="w in word.definitions">
+    	<li>{{ w.meaning }}</li>
     	<!-- examples -->
     	<ul>
-        	<li>{{ d["examples"][0] }}</li>
+        	<li>{{ w["examples"][0] }}</li>
         </ul>
     </ol>
 
