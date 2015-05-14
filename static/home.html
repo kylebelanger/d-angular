@@ -14,6 +14,13 @@
     </select>
     <!-- end list -->
 
+    <!-- delete list -->
+    <form ng-submit="deleteList($index)">
+      <button type="submit">Delete</button>
+    </form>
+    <!-- end delete -->
+
+
     <hr>
 
       <!-- add word -->
@@ -43,6 +50,13 @@
                 <li>{{ w["examples"][0] }}</li>
             </ul>
           </ol>
+
+          <!-- delete word -->
+          <form ng-submit="deleteWord($index)">
+            <button type="submit">Delete</button>
+          </form>
+          <!-- end delete -->
+
         <hr>
 
       </div>
