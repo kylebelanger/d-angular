@@ -11,8 +11,8 @@ angular.module('d-angular', ['ui.router'])
 
 				// Home state
 				.state('home', {
-				  url: 'home',
-				  templateUrl: 'static/home.html',
+				  url: '/home',
+				  templateUrl: '../static/home.html',
 				  controller: 'MainCtrl'
 				})
 		}
