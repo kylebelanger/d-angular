@@ -77,13 +77,14 @@ angular.module('d-angular', ['ui.router'])
 		$scope.addWord = function() {
 
 			// push new word to array
-			$scope.list.words.push({
+			$scope.list.words.unshift({
 				title: $scope.word,
 				date: new Date().toJSON().slice(0,10),
 			});
 
 			// reset title
-			$scope.word = '';
+			$scope.title = '';
+			document.getElementById('word').value = "";
 		};
 
 		// Delete word

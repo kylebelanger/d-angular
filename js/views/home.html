@@ -27,10 +27,10 @@
     </div>
 
       <div ng-class="{visible: list, dim: !list}" class="contain">
-          <p class="title">Add words:</p>
+          <p class="title">Add words: <span ng-class="{visible: list.words, dim: !list.words}" class="float-right count">{{list.words.length}}</span></p>
           <!-- add word -->
           <form ng-submit="addWord()">
-            <input ng-disabled="!list" type="text" ng-model="$parent.word" placeholder="Enter words"></input>
+            <input id="word" ng-disabled="!list" type="text" ng-model="$parent.word" placeholder="Enter words"></input>
             <button ng-disabled="!list" type="submit">Add</button>
           </form>
           <!-- end add -->
