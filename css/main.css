@@ -1,12 +1,36 @@
 body {
-	background-color: #757575;
-	color: #fff;
+	/* background-color: #757575;
+	color: #fff; */
 }
 
 table {
 	width: 400px;
 }
 
-select {
-	width: 250px;
+select, input {
+		width: 250px;
+		float: left;
+		margin: 0 5px 0 0;
+}
+
+.title {
+		margin: 0 0 10px 0;
+		border-bottom: thin dotted grey;
+		width: 100%;
+}
+
+.contain {
+		width: 40%;
+}
+
+.border-top {
+		border-top: thin dotted grey;
+}
+
+.border-bottom {
+		border-bottom: thin dotted grey;
+}
+
+.dim {
+		opacity: .95;
 }

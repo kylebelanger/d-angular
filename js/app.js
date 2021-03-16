@@ -4,25 +4,18 @@ angular.module('d-angular', ['ui.router'])
 // ------------------------------
 .config(['$stateProvider', '$urlRouterProvider',
 
-	// Set state providers
-	function($stateProvider, $urlRouterProvider) {$stateProvider
+		// Set state providers
+		function($stateProvider, $urlRouterProvider) {
+				// require
+				$stateProvider
 
-		// Home state
-		.state('home', {
-		  url: '/home',
-		  templateUrl: '/static/home.html',
-		  controller: 'MainCtrl'
-		})
-
-		// Lists state
-		.state('lists', {
-		  url: '/lists{id}',
-		  templateUrl: 'static/lists.html',
-		  controller: 'ListsCtrl'
-		})
-
-		$urlRouterProvider.otherwise('home');
-	}
+				// Home state
+				.state('home', {
+				  url: '/home',
+				  templateUrl: '/static/home.html',
+				  controller: 'MainCtrl'
+				})
+		}
 ])
 
 
@@ -67,11 +60,16 @@ angular.module('d-angular', ['ui.router'])
 
 			// reset title
 			$scope.title = '';
+
+			// update to this list
+			$scope.list = $scope.lists[$scope.lists.length - 1];
 		};
 
 		// Delete list
 		$scope.deleteList = function(index) {
 			$scope.lists.splice(index, 1);
+			// reset scope
+			$scope.list = false;
 		};
 
 		// Add word function
@@ -82,35 +80,10 @@ angular.module('d-angular', ['ui.router'])
 			$scope.list.words.push({
 				title: $scope.word,
 				date: new Date().toJSON().slice(0,10),
-				// meta
-				// definitions: response.data[0]["dictionary"]["definitionData"][0]["meanings"]
 			});
 
 			// reset title
 			$scope.word = '';
-
-			// API URL
-			// var api_url = "https://www.googleapis.com/scribe/v1/research?key=AIzaSyDqVYORLCUXxSv7zneerIgC2UYMnxvPeqQ&dataset=dictionary&dictionaryLanguage=en&query=";
-
-			// get data from API
-			// $http.get(api_url + $scope.word)
-
-				// handle successful
-				// .success(function (response) {
-					// push new word to array
-				// 	$scope.list.words.push({
-				// 		title: $scope.word,
-				// 		date: new Date().toJSON().slice(0,10),
-				// 		// meta
-				// 		display: response.data[0]["groupResult"]["displayName"],
-				// 		sound: "",
-				// 		speech: "",
-				// 		definitions: response.data[0]["dictionary"]["definitionData"][0]["meanings"]
-				// 	});
-				//
-				// 	// reset title
-				// 	$scope.word = '';
-				// });
 		};
 
 		// Delete word
@@ -120,37 +93,3 @@ angular.module('d-angular', ['ui.router'])
 	}
 
 ])
-
-// Lists controller
-// ------------------------------
-.controller('ListsCtrl', ['$scope', '$stateParams', 'lists', '$http',
-
-	// Main scope (used in views)
-	function($scope, $stateParams, lists, $http){
-		// get list by ID
-		$scope.list = lists.lists[$stateParams.id];
-
-		// Add comment function
-		$scope.addWord = function(){
-
-			// get data from API
-			// $http.get(api_url + $scope.word)
-				// handle successful
-				// .success(function (response) {
-					// push new list to array
-					$scope.list.words.push({
-						title: $scope.word,
-						date: new Date().toJSON().slice(0,10),
-						// meta
-						// display: response.data[0]["groupResult"]["displayName"],
-						// sound: "",
-						// speech: "",
-						// definitions: response.data[0]["dictionary"]["definitionData"][0]["meanings"]
-					});
-					// reset title
-					$scope.word = '';
-				// });
-		};
-	}
-
-]);
