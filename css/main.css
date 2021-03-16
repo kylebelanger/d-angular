@@ -34,3 +34,7 @@ select, input {
 .dim {
 		opacity: .95;
 }
+
+#welcome {
+	background-color: #f5faff;
+}
