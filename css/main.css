@@ -1,3 +1,17 @@
+@media all and (max-width: 850px) {
+  .contain {
+    	width: 100% !important;
+  }
+
+	table {
+			width: 100% !important;
+	}
+
+  select, input {
+      width: 85% !important;
+  }
+}
+
 body {
 	/* background-color: #757575;
 	color: #fff; */
@@ -20,7 +34,7 @@ select, input {
 }
 
 .contain {
-		width: 40%;
+		width: 50%;
 }
 
 .border-top {
